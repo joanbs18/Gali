@@ -19,6 +19,63 @@ html {
   scroll-behavior: smooth;
 }
 
+.hidden {
+  overflow: hidden;
+}
+
+.loarder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 999;
+}
+
+.loader {
+  width: 82px;
+  height: 18px;
+  position: relative;
+}
+.loader::before,
+.loader::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  top: 0;
+  background: #24503a;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  animation: jump 0.5s ease-in infinite alternate;
+}
+
+.loader::after {
+  background: #0000;
+  color: #fff;
+  top: 100%;
+  box-shadow: 32px -20px, -32px -20px;
+  animation: split 0.5s ease-out infinite alternate;
+}
+
+@keyframes split {
+  0% {
+    box-shadow: 8px -20px, -8px -20px;
+  }
+  100% {
+    box-shadow: 32px -20px, -32px -20px;
+  }
+}
+@keyframes jump {
+  0% {
+    transform: translate(-50%, -150%);
+  }
+  100% {
+    transform: translate(-50%, 10%);
+  }
+}
+
 /*=============== HEADER & NAV ===============*/
 
 header {
@@ -28,7 +85,7 @@ header {
   width: 100%;
   background-color: rgb(255, 255, 255); /* 0.7 representa la opacidad (70%) */
   box-shadow: 0 2px 16px hsla(230, 75%, 32%, 0.15);
-  z-index: 999;
+  z-index: 99;
 }
 
 nav {
