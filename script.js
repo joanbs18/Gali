@@ -42,6 +42,11 @@
 // loginClose.addEventListener("click", () => {
 //   login.classList.remove("show-login");
 // });
+window.onload = function () {
+  $('#loader').fadeOut();
+  $('body').removeClass('hidden');
+}
+
 
 function scrollToDirection(event) {
   const gallery = event.currentTarget.parentNode;
