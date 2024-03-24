@@ -160,13 +160,21 @@ nav .nav__link a:nth-child(2) {
   align-items: center;
   justify-content: center;
   text-align: center;
+  overflow: hidden;
   animation: scale-up-vertical-center 0.4s;
 }
 
 .related-img {
   max-width: 100%;
-  height: auto;
-  object-fit: cover;
+  height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 900ms;
+}
+
+.related-container:hover .related-img {
+  transform: scale(1.1);
 }
 
 .related-container {
@@ -178,7 +186,6 @@ nav .nav__link a:nth-child(2) {
   text-align: left;
 }
 
-
 .project-team {
   text-align: center;
   margin-top: 3%;
@@ -186,6 +193,7 @@ nav .nav__link a:nth-child(2) {
 
 .related-text {
   margin-top: 10px;
+  position: relative;
 }
 
 @keyframes scale-up-vertical-center {
@@ -195,6 +203,47 @@ nav .nav__link a:nth-child(2) {
   100% {
     transform: scaleY(1);
   }
+}
+
+/* Estilos para el modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.9);
+  pointer-events: auto;
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  max-height: 80%;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .container {

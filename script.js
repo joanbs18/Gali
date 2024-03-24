@@ -46,6 +46,8 @@ window.onload = function () {
   $("#loader").fadeOut();
   $("body").removeClass("hidden");
 };
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const houseImages = document.querySelectorAll(".house-img");
 
@@ -66,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const relatedData = this.getAttribute("data-related").split("|");
       const relatedContainer = document.getElementById("related-images");
       relatedContainer.innerHTML = ""; // Limpiar contenedor antes de agregar nuevas imágenes y texto
-
       for (let i = 0; i < relatedData.length; i += 2) {
         const container = document.createElement("div");
         container.classList.add("related-container");
@@ -75,6 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
         imgElement.src = relatedData[i];
         imgElement.alt = "Related Image";
         imgElement.classList.add("related-img");
+        imgElement.setAttribute("onclick", "openImage(this)");
 
         container.appendChild(imgElement);
 
@@ -89,8 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
         relatedContainer.appendChild(container);
       }
 
-      
-
       // Desplazar la página hacia arriba hasta el elemento con el ID related_img
       const relatedImgContainer = document.getElementById("related_img");
       relatedImgContainer.scrollIntoView({
@@ -101,3 +101,15 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+function openImage(imgElement) {
+  var modal = document.getElementById("image-modal");
+  var modalImg = document.getElementById("modal-img");
+
+  modal.style.display = "flex";
+  modalImg.src = imgElement.src;
+}
+
+function closeImage() {
+  var modal = document.getElementById("image-modal");
+  modal.style.display = "none"; // Ocultar el modal
+}

@@ -27,6 +27,10 @@
             </ul>
         </nav>
     </header>
+    <div id="image-modal" class="modal">
+        <span class="close" onclick="closeImage()">&times;</span>
+        <img id="modal-img" class="modal-content">
+    </div>
     <div class="container__house__related" id="related_img">
         <h1 id="project-name" class="project-name"></h1>
         <div id="related-images" class="grid-container">
@@ -39,7 +43,9 @@
 
         </div>
         <p id="project-team" class="project-team"></p>
+
     </div>
+
     <div class="container">
         <div class="box__gallery">
             <img src="img/casa1.jpg" alt="Casa 1" class="house-img" data-project-name="Hotel Miravalles"
