@@ -43,31 +43,46 @@
 //   login.classList.remove("show-login");
 // });
 window.onload = function () {
-  $('#loader').fadeOut();
-  $('body').removeClass('hidden');
-}
+  $("#loader").fadeOut();
+  $("body").removeClass("hidden");
+};
+document.addEventListener("DOMContentLoaded", function () {
+  const houseImages = document.querySelectorAll(".house-img");
 
+  houseImages.forEach((image) => {
+    image.addEventListener("click", function () {
+      const relatedData = this.getAttribute("data-related").split("|");
+      const relatedContainer = document.getElementById("related-images");
+      relatedContainer.innerHTML = ""; // Limpiar contenedor antes de agregar nuevas imágenes y texto
 
-function scrollToDirection(event) {
-  const gallery = event.currentTarget.parentNode;
-  const scrollAmount = gallery.clientWidth; // Ancho de un elemento, asumiendo que todos son iguales
-  const totalWidth = gallery.scrollWidth;
+      for (let i = 0; i < relatedData.length; i += 2) {
+        const container = document.createElement("div");
+        container.classList.add("related-container");
 
-  // Obtiene la posición del clic en relación con la imagen
-  const clickX = event.clientX - event.target.getBoundingClientRect().left;
-  
-  // Calcula el nuevo desplazamiento considerando la posición del clic
-  const newScrollLeft = gallery.scrollLeft + (clickX > event.target.clientWidth / 2 ? scrollAmount : -scrollAmount);
+        const imgElement = document.createElement("img");
+        imgElement.src = relatedData[i];
+        imgElement.alt = "Related Image";
+        imgElement.classList.add("related-img");
 
-  // Si el nuevo desplazamiento es mayor que el ancho total, vuelve al principio
-  const finalScroll = newScrollLeft >= totalWidth ? 0 : newScrollLeft;
+        container.appendChild(imgElement);
 
-  // Desplaza suavemente al nuevo punto
-  gallery.scrollTo({
-    left: finalScroll,
-    behavior: 'smooth'
+        // Verificar si hay texto disponible
+        if (relatedData[i + 1]) {
+          const textElement = document.createElement("p");
+          textElement.textContent = relatedData[i + 1];
+          textElement.classList.add("related-text");
+          container.appendChild(textElement);
+        }
+
+        relatedContainer.appendChild(container);
+      }
+
+      // Desplazar la página hacia arriba hasta el elemento con el ID related_img
+      const relatedImgContainer = document.getElementById("related_img");
+      relatedImgContainer.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
   });
-
-
- 
-}
+});
