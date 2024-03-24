@@ -51,6 +51,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
   houseImages.forEach((image) => {
     image.addEventListener("click", function () {
+      const projectName = this.getAttribute("data-project-name");
+      const projectNameId = document.getElementById("project-name");
+      projectNameId.textContent = "";
+      projectNameId.textContent = projectName;
+      const projectTeam = this.getAttribute("data-project-team");
+      const projectTeamId = document.getElementById("project-team");
+      projectTeamId.innerHTML = "<b>Equipo de trabajo<b><br>";
+      projectTeamId.innerHTML += projectTeam;
+
+      const container = document.querySelector(".container__house__related");
+      container.insertBefore(projectNameId, container.firstChild);
+
       const relatedData = this.getAttribute("data-related").split("|");
       const relatedContainer = document.getElementById("related-images");
       relatedContainer.innerHTML = ""; // Limpiar contenedor antes de agregar nuevas imágenes y texto
@@ -77,6 +89,8 @@ document.addEventListener("DOMContentLoaded", function () {
         relatedContainer.appendChild(container);
       }
 
+      
+
       // Desplazar la página hacia arriba hasta el elemento con el ID related_img
       const relatedImgContainer = document.getElementById("related_img");
       relatedImgContainer.scrollIntoView({
@@ -86,3 +100,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+

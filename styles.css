@@ -7,7 +7,9 @@
 
 :root {
   --body-font: "minion", sans-serif;
-  --text-p: 15px;
+  --text-p: 16px;
+  --text-h1: 24px;
+  --text-logo: 2rem;
   --color-text: #000;
 }
 
@@ -116,6 +118,7 @@ nav .nav__link a li {
   margin-right: 1rem;
   cursor: pointer;
   color: var(--color-text);
+  font-size: var(--text-h1);
 }
 
 nav .nav__link a:first-child {
@@ -131,19 +134,24 @@ nav .nav__link a:nth-child(2) {
   font-weight: 700;
   transition: color 0.4s;
   padding: 1rem;
-  font-size: 2rem;
+  font-size: var(--text-logo);
   display: grid;
   place-content: center;
   pointer-events: auto;
 }
 
-.grid-container {
-  display: grid;
+.container__house__related {
   max-width: 1200px;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px; /* Espacio entre elementos */
   margin: auto;
-  margin-top: 5%;
+  padding: 10px;
+}
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Espacio entre las imágenes */
+  margin-top: 20px;
 }
 
 .related-container {
@@ -157,8 +165,23 @@ nav .nav__link a:nth-child(2) {
 
 .related-img {
   max-width: 100%;
-  max-height: 100%; /* Establecer una altura máxima para evitar distorsiones */
-  object-fit: cover; /* Escalar la imagen mientras se mantiene su relación de aspecto */
+  height: auto;
+  object-fit: cover;
+}
+
+.related-container {
+  flex-basis: calc(50% - 10px);
+}
+
+.project-name {
+  margin-top: 5%;
+  text-align: left;
+}
+
+
+.project-team {
+  text-align: center;
+  margin-top: 3%;
 }
 
 .related-text {
@@ -176,34 +199,69 @@ nav .nav__link a:nth-child(2) {
 
 .container {
   max-width: 1200px;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centra los elementos en la fila */
   margin: 0 auto;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  margin-top: 5%;
-}
-
-.box__gallery img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: all 1.1s;
-  cursor: pointer;
 }
 
 .box__gallery {
-  width: 100%;
-  height: 100%;
-  border: 1px solid red;
+  flex-basis: calc(33.33% - 20px); /* Calcula el ancho base de cada elemento */
+  max-width: calc(400px - 20px); /* Ancho máximo de cada elemento */
+  margin-bottom: 20px; /* Margen inferior entre elementos */
+  margin: 10px;
 }
 
+.box__gallery img {
+  width: 100%; /* Reducir el ancho de la imagen para dejar espacio */
+  height: 100%; /* Mantener la altura de la imagen */
+  object-fit: cover;
+  margin-right: 10px; /* Agregar un margen a la derecha de cada imagen */
+  margin-bottom: 10px; /* Agregar un margen inferior a cada imagen */
+  transition: all 1.1s;
+  cursor: pointer;
+}
 /* .box__gallery img:hover{
   transform: scale(0.7);
 } */
 
 @media (max-width: 991px) {
-  .container {
-    padding: 10px;
-    grid-template-columns: repeat(1, 1fr);
+  header {
+    height: 80px;
+    background-color: #fff;
+  }
+
+  nav .nav__link a li {
+    padding-right: 0rem;
+    margin-right: 0rem;
+  }
+
+  nav .nav__link a:first-child {
+    transform: rotate(0deg);
+  }
+
+  nav .nav__link a:nth-child(2) {
+    transform: rotate(0deg);
+  }
+
+  .container__house__related {
+    margin-top: 90px;
+  }
+
+  .grid-container {
+    justify-content: flex-start; /* Cambia la justificación a inicio */
+  }
+
+  .related-container {
+    flex-basis: 100%; /* Establece el ancho base de cada contenedor al 100% para que ocupen toda la anchura */
+  }
+  .box__gallery {
+    flex-basis: calc(
+      100% - 20px
+    ); /* Establece el ancho base al 100% en dispositivos móviles */
+    max-width: calc(
+      100% - 20px
+    ); /* Establece el ancho máximo al 100% en dispositivos móviles */
+    margin: 10px;
   }
 }
