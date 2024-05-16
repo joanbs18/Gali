@@ -116,11 +116,19 @@ main {
   margin: auto;
 }
 
+.information{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+
 .information p{
   color: var(--color-text);
   font-size: 17px;
-  text-align: center;
-  max-width: 1200px;
+  text-align: justify;
+  max-width: 1000px;
+  
   
 }
 
