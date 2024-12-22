@@ -20,7 +20,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Ruta para crear un nuevo proyecto con imagen
-router.post("/",verifyToken, upload.single("imagen"), proyectoController.crearProyecto);
+router.post("/", upload.single("imagen"), proyectoController.crearProyecto);
 
 // Otras rutas
 router.get("/", proyectoController.obtenerProyectos);
@@ -30,6 +30,6 @@ router.put(
   upload.single("imagen"),
   proyectoController.actualizarProyecto
 );
-router.delete("/:idproyecto",verifyToken, proyectoController.eliminarProyecto);
+router.delete("/:idproyecto", proyectoController.eliminarProyecto);
 
 module.exports = router;

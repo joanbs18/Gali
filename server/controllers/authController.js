@@ -1,6 +1,6 @@
 const User = require("../models/Auth"); // Importar el modelo del usuario
 const jwt = require("jsonwebtoken"); // Librería para manejar JWT
-const bcrypt = require("bcryptjs"); // Librería para cifrar contraseñas
+const bcrypt = require("bcrypt"); // Librería para cifrar contraseñas
 const secretKey = process.env.JWT_SECRET_KEY; // Clave secreta para el JWT
 
 // Función para registrar un nuevo usuario
@@ -68,7 +68,7 @@ const loginUser = async (req, res) => {
       .cookie("access_token", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV !== "production",
-        sameSite: "strict",
+        //sameSite: "strict",
         maxAge: 1000 * 60 * 60,
       })
       .send({message: "Inicio de sesión exitoso"})
@@ -132,22 +132,7 @@ const deleteUser = async (req, res) => {
   }
 };
 
-// Middleware para verificar el token
-const verifyToken = (req, res, next) => {
-  const token = req.headers["authorization"];
 
-  if (!token) {
-    return res.status(403).json({ error: "Token no proporcionado" });
-  }
-
-  try {
-    const decoded = jwt.verify(token, secretKey);
-    req.user = decoded; // Almacenar la información del usuario en el objeto `req`
-    next();
-  } catch (error) {
-    return res.status(401).json({ error: "Token inválido o expirado" });
-  }
-};
 
 // Exportar todas las funciones del controlador
 module.exports = {
@@ -156,5 +141,4 @@ module.exports = {
   getAllUsers,
   getUserById,
   deleteUser,
-  verifyToken,
 };

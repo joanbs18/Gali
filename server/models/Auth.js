@@ -1,5 +1,5 @@
 
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const crypto = require('crypto'); 
 const MySQLConnection = require("../config/mysql"); // Importa la conexión
 
@@ -16,10 +16,10 @@ const generateUniqueId = () => {
     
     try {
       // Encriptar la contraseña
-      const hashedPassword = await bcrypt.hash(password, process.env.SALT_ROUNDS);
+      const hashedPassword = await bcrypt.hash(password, parseInt(process.env.SALT_ROUNDS));  
   
       // Generar un ID único para el usuario
-      const userId = generateUniqueId();
+      const userId =  generateUniqueId();
   
       // SQL para insertar el nuevo usuario con un ID único
       const query = 'INSERT INTO usuario (id, usuario, contraseña) VALUES (?, ?, ?)';
@@ -28,6 +28,7 @@ const generateUniqueId = () => {
 
       return userId; 
     } catch (error) {
+      console.log(error)
       throw new Error('Error al crear el usuario');
     }
   };

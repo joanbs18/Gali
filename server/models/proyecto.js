@@ -22,13 +22,10 @@ async function createProyecto(nombre, descripcion, equipo, imagen) {
   }
 }
 
-
-
 // Función para obtener todos los proyectos
 async function getAllProyectos() {
- 
-  const sql = `SELECT * FROM proyecto`; 
-  const connection = await MySQLConnection(); 
+  const sql = `SELECT * FROM proyecto`;
+  const connection = await MySQLConnection();
 
   try {
     const [results] = await connection.execute(sql);
@@ -59,17 +56,19 @@ async function getProyectoById(idproyecto) {
 
 // Función para actualizar un proyecto
 async function updateProyecto(idproyecto, nombre, descripcion, equipo, imagen) {
-  const sql =
-    "UPDATE proyecto SET nombre = ?, descripcion = ?, equipo = ?, imagen = ? WHERE idproyecto = ?";
+
+    const sql = "call actualizarProyecto(?,?,?,?,?)";
+
   const connection = await MySQLConnection(); // Obtener la conexión
 
   try {
     const [result] = await connection.execute(sql, [
+      idproyecto,
       nombre,
       descripcion,
       equipo,
       imagen,
-      idproyecto,
+     
     ]);
     return result;
   } catch (err) {

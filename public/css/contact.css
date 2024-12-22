@@ -88,27 +88,18 @@ main {
 }
 
 .container__contact {
-  text-align: center;
-  width: 100%;
   max-width: 1200px;
+  width: 100%;
   display: grid;
-  margin: auto;
-  grid-template-columns: repeat(1, 1fr);
-  text-wrap: balance;
   place-content: center;
-  grid-gap: 30px;
+  margin: auto;
+  text-align: center;
 }
 
 .box__contact {
   width: 100%;
   color: var(--color-text);
   font-size: var(--text-title);
-}
-
-.box__contact img {
-  width: auto;
-  border-radius: 80%;
-  margin: auto;
 }
 
 .information {
@@ -127,6 +118,7 @@ main {
 .buttons_contact {
   display: grid;
   place-content: center;
+  padding: 10px;
 }
 
 .container {

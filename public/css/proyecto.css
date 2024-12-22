@@ -1,15 +1,13 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-@import url("https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap");
+@font-face {
+  font-family: "minion";
+  src: url(/public/font/MinionPro-Regular.woff);
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Montserrat Alternates", sans-serif;
+  font-family: "minion", sans-serif;
 }
 body {
   background-image: url("../img/PortadaLogin.jpg");

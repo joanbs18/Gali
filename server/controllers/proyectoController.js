@@ -71,7 +71,6 @@ async function actualizarProyecto(req, res) {
   const { idproyecto } = req.params;
   const { nombre, descripcion, equipo } = req.body;
   const imagenPath = req.file ? `/img/${req.file.filename}` : null;
-
   try {
     const result = await updateProyecto(
       idproyecto,

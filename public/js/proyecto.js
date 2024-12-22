@@ -48,7 +48,7 @@ async function loadProjects() {
     <td>${proyecto.descripcion}</td>
     <td>${proyecto.equipo}</td>
     <td>
-        <img loading="lazy" src="/public/${proyecto.imagen}" alt="Imagen del proyecto" style="width: 100px; height: auto;">
+        <img loading="lazy" src="${proyecto.imagen}" alt="Imagen del proyecto" style="width: 100px; height: auto;">
     </td>
     <td>
       <svg onclick="abrirModal('${proyecto.idproyecto}')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" color="#001aff" fill="none">
@@ -108,7 +108,7 @@ async function deleteProject(id) {
 
 document.getElementById("updateForm").addEventListener("submit", async (e) => {
   e.preventDefault();
-  const id = e.target.dataset.id; // Recuperamos el ID del proyecto
+  // Recuperamos el ID del proyecto
   const nombre = document.getElementById("nombre_update").value.trim();
   const descripcion = document
     .getElementById("descripcion_update")
@@ -123,10 +123,12 @@ document.getElementById("updateForm").addEventListener("submit", async (e) => {
   if (imagen) formData.append("imagen", imagen);
 
   try {
-    const response = await fetch(`http://localhost:5400/api/proyecto/${id}`, {
+    const response = await fetch(`http://localhost:5400/api/proyecto/${idProyecto}`, {
       method: "PUT",
       body: formData,
     });
+
+    console.log(response);
 
     if (!response.ok) throw new Error("Error al actualizar el proyecto");
 
@@ -156,11 +158,12 @@ async function abrirModal(idproyecto) {
     document.getElementById("nombre_update").value = project.nombre;
     document.getElementById("descripcion_update").value = project.descripcion;
     document.getElementById("equipo_update").value = project.equipo;
+    idProyecto = idproyecto;
   } catch (error) {
     console.error("Error al cargar el proyecto:", error);
   }
   modal.style.display = "flex";
-  idProyecto = idproyecto;
+  
 }
 
 // Cerrar el modal al hacer clic en el botón "Cerrar"

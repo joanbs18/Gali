@@ -2,16 +2,6 @@ const mysql = require('mysql2/promise');
 require('dotenv').config();
 
 
-
-console.log({
-    MYSQLDATABASE: process.env.MYSQLDATABASE,
-    MYSQLUSER: process.env.MYSQLUSER,
-    MYSQLPASSWORD: process.env.MYSQLPASSWORD,
-    MYSQLHOST: process.env.MYSQLHOST,
-    MYSQLPORT: process.env.MYSQLPORT
-});
-
-
 const MySQLConnection = async () => {
     try {
         const connection = await mysql.createConnection({  // Asegúrate de usar await aquí

@@ -14,12 +14,12 @@ const verifyToken = (req, res, next) => {
   // Obtener el token desde las cookies
   const token = req.cookies.access_token;
 
+
   // Si no hay token, se retorna un error
   if (!token) {
-    return res.status(403).json({ error: "Token no proporcionado" });
+    return res.status(403).json({ error: "Acceso invalido" });
   }
 
-  console.log(token);
 
   try {
     // Verificar el token usando la clave secreta
