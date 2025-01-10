@@ -1,0 +1,43 @@
+{
+    "proyectos": [
+      {
+        "idproyecto": 1,
+        "nombre": "Sistema de Gestión Escolar",
+        "descripcion": "Un sistema para gestionar las actividades escolares, incluyendo calificaciones, asistencia y horarios.",
+        "equipo": "Juan, María, Carlos",
+        "imagen": "https://example.com/images/gestion_escolar.png",
+        "imagenesProyecto": [
+          {
+            "idimagenproyecto": 1,
+            "imagen": "https://example.com/images/gestion_escolar_dashboard.png",
+            "descripcion": "Vista del panel principal del sistema."
+          },
+          {
+            "idimagenproyecto": 2,
+            "imagen": "https://example.com/images/gestion_escolar_asistencia.png",
+            "descripcion": "Vista del módulo de asistencia."
+          }
+        ]
+      },
+      {
+        "idproyecto": 2,
+        "nombre": "Aplicación de Recetas",
+        "descripcion": "Una app para encontrar y compartir recetas de cocina.",
+        "equipo": "Ana, Roberto, Luisa",
+        "imagen": "https://example.com/images/app_recetas.png",
+        "imagenesProyecto": [
+          {
+            "idimagenproyecto": 3,
+            "imagen": "https://example.com/images/app_recetas_busqueda.png",
+            "descripcion": "Pantalla de búsqueda de recetas."
+          },
+          {
+            "idimagenproyecto": 4,
+            "imagen": "https://example.com/images/app_recetas_receta.png",
+            "descripcion": "Vista de una receta detallada."
+          }
+        ]
+      }
+    ]
+  }
+  

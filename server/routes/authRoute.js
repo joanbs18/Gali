@@ -6,7 +6,7 @@ const router = express.Router();
 
 
 //COMENTADO PARA EVITAR QUE LO USEN MÁS
-// router.post("/register", registerUser);
+router.post("/register", registerUser);
 
 // Ruta para iniciar sesión
 router.post("/login", loginUser);
